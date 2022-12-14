@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -88,51 +89,7 @@ public class Player : MonoBehaviour, IPlayerControlble
             _playerWeapon.SetTimeSpeedShooting(5);
         }
         _levelText.text = "LEVEL: " + _level;
-        _hpText.text = "HP: " + _hp;
-        if (_hp < 10)
-        {
-            _hpText.text = "HP: 10";
-        }
-        if (_hp <= 10 && _hp > 9)
-        {
-            _hpText.text = "HP: 9";
-        }
-        if (_hp <= 9 && _hp > 8)
-        {
-            _hpText.text = "HP: 8";
-        }
-        if (_hp <= 8 && _hp > 7)
-        {
-            _hpText.text = "HP: 7";
-        }
-        if (_hp <= 7 && _hp > 6)
-        {
-            _hpText.text = "HP: 6";
-        }
-        if (_hp <= 6 && _hp > 5)
-        {
-            _hpText.text = "HP: 5";
-        }
-        if (_hp <= 5 && _hp > 4)
-        {
-            _hpText.text = "HP: 4";
-        }
-        if (_hp <= 4 && _hp > 3)
-        {
-            _hpText.text = "HP: 3";
-        }
-        if (_hp <= 3 && _hp > 2)
-        {
-            _hpText.text = "HP: 2";
-        }
-        if (_hp <= 2 && _hp > 1)
-        {
-            _hpText.text = "HP: 1";
-        }
-        if (_hp <= 1 && _hp > 0)
-        {
-            _hpText.text = "HP: 0";
-        }
+        _hpText.text = "HP " + Mathf.Floor(_hp); 
         _levelPointsText.text = "LEVEL POINTS: " + _countLevel + "/100";
         PlayerPrefs.SetInt("level", _level);
     }
@@ -166,51 +123,8 @@ public class Player : MonoBehaviour, IPlayerControlble
     public void GetDamage(float damage)
     {
         _hp -= damage;
-        if (_hp < 10)
-        {
-            _hpText.text = "HP: 10";
-        }
-        if (_hp <= 10 && _hp > 9)
-        {
-            _hpText.text = "HP: 9";
-        }
-        if (_hp <= 9 && _hp > 8)
-        {
-            _hpText.text = "HP: 8";
-        }
-        if (_hp <= 8 && _hp > 7)
-        {
-            _hpText.text = "HP: 7";
-        }
-        if (_hp <= 7 && _hp > 6)
-        {
-            _hpText.text = "HP: 6";
-        }
-        if (_hp <= 6 && _hp > 5)
-        {
-            _hpText.text = "HP: 5";
-        }
-        if (_hp <= 5 && _hp > 4)
-        {
-            _hpText.text = "HP: 4";
-        }
-        if (_hp <= 4 && _hp > 3)
-        {
-            _hpText.text = "HP: 3";
-        }
-        if (_hp <= 3 && _hp > 2)
-        {
-            _hpText.text = "HP: 2";
-        }
-        if (_hp <= 2 && _hp > 1)
-        {
-            _hpText.text = "HP: 1";
-        }
-        if (_hp <= 1 && _hp > 0)
-        {
-            _hpText.text = "HP: 0";
-        }
-        if (_hp < 1)
+        _hpText.text = "HP: " + Mathf.Floor(_hp);
+        if (_hp <= 0)
         {
             _animator.SetBool("OnDead", true);
             Instantiate(_dead, transform.position, Quaternion.identity);
@@ -229,55 +143,13 @@ public class Player : MonoBehaviour, IPlayerControlble
                     if (_startHp - _hp >= _plusHp)
                     {
                         _hp += _plusHp;
-                        if (_hp < 10)
-                        {
-                            _hpText.text = "HP: 10";
-                        }
-                        if (_hp <= 10 && _hp > 9)
-                        {
-                            _hpText.text = "HP: 9";
-                        }
-                        if (_hp <= 9 && _hp > 8)
-                        {
-                            _hpText.text = "HP: 8";
-                        }
-                        if (_hp <= 8 && _hp > 7)
-                        {
-                            _hpText.text = "HP: 7";
-                        }
-                        if (_hp <= 7 && _hp > 6)
-                        {
-                            _hpText.text = "HP: 6";
-                        }
-                        if (_hp <= 6 && _hp > 5)
-                        {
-                            _hpText.text = "HP: 5";
-                        }
-                        if (_hp <= 5 && _hp > 4)
-                        {
-                            _hpText.text = "HP: 4";
-                        }
-                        if (_hp <= 4 && _hp > 3)
-                        {
-                            _hpText.text = "HP: 3";
-                        }
-                        if (_hp <= 3 && _hp > 2)
-                        {
-                            _hpText.text = "HP: 2";
-                        }
-                        if (_hp <= 2 && _hp > 1)
-                        {
-                            _hpText.text = "HP: 1";
-                        }
-                        if (_hp <= 1 && _hp > 0)
-                        {
-                            _hpText.text = "HP: 0";
-                        }
+
                     }
                     else
                     {
                         _hp = _startHp;
                     }
+                    _hpText.text = "HP " + Mathf.Floor(_hp);
                 }
                 break;
             case (2):
